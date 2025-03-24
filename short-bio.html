@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Builder - Short Bio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 70px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Navigation -->
+    <nav class="modern-nav">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="index.html" class="nav-brand">CV Builder</a>
+                <button class="mobile-menu-btn" id="menuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="nav-menu" id="navMenu">
+                    <a href="index.html" class="nav-link">Details</a>
+                    <a href="short-bio.html" class="nav-link active">Bio</a>
+                    <a href="experience.html" class="nav-link">Experience</a>
+                    <a href="education.html" class="nav-link">Education</a>
+                    <a href="skills.html" class="nav-link">Skills</a>
+                </div>
+                <div class="progress-bar" style="width: 40%;"></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="form-section">
+                    <div class="section-header">
+                        <h1 class="h3 mb-3">Professional Summary</h1>
+                    </div>
+                    <h2 class="h5 text-muted mb-4">Tell employers about your professional background</h2>
+
+                    <form id="bioForm">
+                        <div class="form-floating mb-4">
+                            <textarea class="form-control" id="professional-summary" style="height: 150px" placeholder="Professional Summary" required></textarea>
+                            <label for="professional-summary">Professional Summary</label>
+                            <div class="form-text">Write 2-4 short & energetic sentences to interest the reader! Mention your role, experience & most importantly - your biggest achievements, best qualities and skills.</div>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <textarea class="form-control" id="career-objective" style="height: 150px" placeholder="Career Objective" required></textarea>
+                            <label for="career-objective">Career Objective</label>
+                            <div class="form-text">What are your career goals? Where do you see yourself in the next few years? What kind of opportunities are you looking for?</div>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-warning btn-lg">Save & Next</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/short-bio.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Hide mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const navMenu = document.getElementById('navMenu');
+            const menuBtn = document.getElementById('menuBtn');
+            if (!navMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                navMenu.classList.remove('active');
+                menuBtn.querySelector('i').classList.add('fa-bars');
+                menuBtn.querySelector('i').classList.remove('fa-times');
+            }
+        });
+    </script>
+</body>
+</html> 

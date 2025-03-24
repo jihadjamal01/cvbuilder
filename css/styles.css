@@ -1,0 +1,199 @@
+/* Custom styles */
+.nav-pills .nav-link.active {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.nav-pills .nav-link {
+    color: #6c757d;
+}
+
+.form-control:focus {
+    border-color: #ffc107;
+    box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25);
+}
+
+.btn-warning {
+    color: #000;
+}
+
+.btn-warning:hover {
+    background-color: #ffca2c;
+    border-color: #ffc720;
+}
+
+/* Modern Navigation Styles */
+.modern-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.nav-brand {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #000;
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    color: #6c757d;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #000;
+}
+
+.nav-link.active {
+    color: #ffc107;
+}
+
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background-color: #ffc107;
+    transition: width 0.3s ease;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #000;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+        position: relative;
+        z-index: 1001;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 5rem 1.5rem 1.5rem;
+        transition: right 0.3s ease;
+        box-shadow: -2px 0 4px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-menu .nav-link {
+        width: 100%;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .nav-menu .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    .modern-nav .container {
+        padding: 0 1rem;
+    }
+
+    .modern-nav .d-flex {
+        position: relative;
+    }
+
+    .progress-bar {
+        bottom: -1rem;
+        width: 100% !important;
+    }
+
+    /* CV Preview Responsive Styles */
+    .cv-header .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-info {
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .skill-badge {
+        display: inline-block;
+        margin: 0.2rem;
+    }
+
+    .section {
+        padding: 1rem;
+    }
+
+    .container {
+        padding: 0.5rem;
+    }
+
+    #profile-image {
+        margin-bottom: 1rem;
+    }
+
+    .print-button {
+        bottom: 1rem;
+        right: 1rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* General Responsive Improvements */
+.form-section {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.section-header {
+    margin-bottom: 1.5rem;
+}
+
+.form-floating {
+    margin-bottom: 1rem;
+}
+
+.btn-group {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Theme Colors */
+:root {
+    --primary-color: #ffc107;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+} 

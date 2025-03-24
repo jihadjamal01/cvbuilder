@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Builder - Experience</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 70px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Navigation -->
+    <nav class="modern-nav">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="index.html" class="nav-brand">CV Builder</a>
+                <button class="mobile-menu-btn" id="menuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="nav-menu" id="navMenu">
+                    <a href="index.html" class="nav-link">Details</a>
+                    <a href="short-bio.html" class="nav-link">Bio</a>
+                    <a href="experience.html" class="nav-link active">Experience</a>
+                    <a href="education.html" class="nav-link">Education</a>
+                    <a href="skills.html" class="nav-link">Skills</a>
+                </div>
+                <div class="progress-bar" style="width: 60%;"></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="form-section">
+                    <div class="section-header">
+                        <h1 class="h3 mb-3">Work Experience</h1>
+                    </div>
+                    <h2 class="h5 text-muted mb-4">Add your relevant work experience</h2>
+
+                    <div id="experience-list" class="mb-4">
+                        <!-- Experience entries will be added here -->
+                    </div>
+
+                    <form id="experienceForm" class="mb-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="job-title" placeholder="Job Title" required>
+                            <label for="job-title">Job Title</label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="company" placeholder="Company" required>
+                            <label for="company">Company</label>
+                        </div>
+
+                        <div class="row g-3 mb-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="month" class="form-control" id="start-date" required>
+                                    <label for="start-date">Start Date</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="month" class="form-control" id="end-date">
+                                    <label for="end-date">End Date</label>
+                                </div>
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input" type="checkbox" id="current-job">
+                                    <label class="form-check-label" for="current-job">
+                                        I currently work here
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="location" placeholder="Location" required>
+                            <label for="location">Location</label>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <textarea class="form-control" id="responsibilities" style="height: 150px" placeholder="Responsibilities" required></textarea>
+                            <label for="responsibilities">Key Responsibilities & Achievements</label>
+                            <div class="form-text">Use bullet points to list your key responsibilities and achievements. Start each point with an action verb.</div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-warning">Add Experience</button>
+                            <button type="button" id="next-btn" class="btn btn-warning btn-lg">Save & Next</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Experience Entry Template -->
+    <template id="experience-entry-template">
+        <div class="card mb-3 experience-entry">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <div>
+                        <h5 class="card-title mb-1"></h5>
+                        <h6 class="card-subtitle mb-2 text-muted company"></h6>
+                        <p class="card-text small text-muted location"></p>
+                    </div>
+                    <div class="text-end">
+                        <p class="card-text small text-muted dates"></p>
+                        <button class="btn btn-sm btn-outline-danger delete-btn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                <p class="card-text responsibilities"></p>
+            </div>
+        </div>
+    </template>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/experience.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Hide mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const navMenu = document.getElementById('navMenu');
+            const menuBtn = document.getElementById('menuBtn');
+            if (!navMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                navMenu.classList.remove('active');
+                menuBtn.querySelector('i').classList.add('fa-bars');
+                menuBtn.querySelector('i').classList.remove('fa-times');
+            }
+        });
+    </script>
+</body>
+</html> 

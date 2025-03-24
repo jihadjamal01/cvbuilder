@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Preview</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 70px;
+            padding-bottom: 80px; /* Add padding to prevent button overlap */
+        }
+        
+        /* General styles */
+        body {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        .cv-header {
+            background-color: #f8f9fa;
+            padding: 1.5rem 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            border-bottom: 2px solid #ffc107;
+            padding-bottom: 0.3rem;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .experience-item:last-child, .education-item:last-child {
+            border-bottom: none;
+        }
+
+        .skill-badge {
+            background-color: #f8f9fa;
+            padding: 0.3rem 0.7rem;
+            margin: 0.2rem;
+            border-radius: 15px;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .contact-info i {
+            width: 15px;
+            color: #ffc107;
+        }
+
+        #profile-image {
+            border: 2px solid #ffc107;
+            width: 100px;
+            height: 100px;
+        }
+
+        /* Print Button Styles */
+        .print-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: #ffc107;
+            color: #000;
+            border: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            min-width: 160px;
+        }
+
+        .print-button:hover {
+            background-color: #ffca2c;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .print-button i {
+            font-size: 1.1rem;
+        }
+
+        /* Mobile-specific print button styles */
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 100px; /* Increased padding to prevent content from being hidden behind the button */
+            }
+
+            .print-button {
+                width: calc(100% - 32px); /* Full width minus margins */
+                max-width: 320px; /* Maximum width on mobile */
+                bottom: 16px;
+                padding: 14px 20px;
+                margin: 0 16px;
+                font-size: 16px;
+                border-radius: 12px;
+                background-color: #ffc107;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            }
+
+            .print-button i {
+                font-size: 18px;
+            }
+        }
+
+        /* Print-specific styles */
+        @media print {
+            @page {
+                size: A4;
+                margin: 1cm;
+            }
+
+            body {
+                padding: 0 !important;
+                margin: 0 !important;
+                font-size: 11px !important;
+                line-height: 1.3 !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            /* Hide navigation and buttons */
+            .modern-nav,
+            .print-button,
+            .nav-menu,
+            .mobile-menu-btn {
+                display: none !important;
+            }
+
+            /* Reset padding and margins */
+            .container {
+                width: 100% !important;
+                max-width: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            /* Adjust header spacing */
+            .cv-header {
+                padding: 0.5rem 0 !important;
+                margin-bottom: 0.8rem !important;
+                background-color: #f8f9fa !important;
+            }
+
+            /* Optimize section spacing */
+            .section {
+                margin-bottom: 0.8rem !important;
+                page-break-inside: avoid !important;
+            }
+
+            .section-title {
+                font-size: 13px !important;
+                margin-bottom: 0.4rem !important;
+                padding-bottom: 0.2rem !important;
+            }
+
+            /* Adjust text sizes */
+            h1 { font-size: 16px !important; margin-bottom: 0.2rem !important; }
+            h2 { font-size: 14px !important; margin-bottom: 0.2rem !important; }
+            h3 { font-size: 13px !important; margin-bottom: 0.2rem !important; }
+            h4 { font-size: 12px !important; margin-bottom: 0.2rem !important; }
+            h5, h6 { font-size: 11px !important; margin-bottom: 0.2rem !important; }
+            p { margin-bottom: 0.2rem !important; }
+
+            /* Optimize experience and education items */
+            .experience-item, .education-item {
+                margin-bottom: 0.4rem !important;
+                padding-bottom: 0.4rem !important;
+            }
+
+            /* Adjust skill badges */
+            .skill-badge {
+                padding: 0.1rem 0.4rem !important;
+                margin: 0.1rem !important;
+                font-size: 10px !important;
+                background-color: #f8f9fa !important;
+                border: 1px solid #ddd !important;
+            }
+
+            /* Optimize profile image size */
+            #profile-image {
+                width: 70px !important;
+                height: 70px !important;
+            }
+
+            /* Adjust contact info */
+            .contact-info {
+                font-size: 10px !important;
+            }
+
+            .contact-info i {
+                width: 12px !important;
+                margin-right: 0.2rem !important;
+            }
+
+            /* Adjust spacing classes */
+            .mb-1 { margin-bottom: 0.1rem !important; }
+            .mb-2 { margin-bottom: 0.2rem !important; }
+            .mb-3 { margin-bottom: 0.3rem !important; }
+            .mb-4 { margin-bottom: 0.4rem !important; }
+            .mt-1 { margin-top: 0.1rem !important; }
+            .mt-2 { margin-top: 0.2rem !important; }
+            .mt-3 { margin-top: 0.3rem !important; }
+            .mt-4 { margin-top: 0.4rem !important; }
+
+            /* Ensure no page breaks inside elements */
+            .experience-item, .education-item, .section {
+                page-break-inside: avoid !important;
+            }
+
+            /* Optimize certifications display */
+            .certification-item {
+                margin-bottom: 0.3rem !important;
+            }
+
+            /* Hide unnecessary elements */
+            .d-print-none {
+                display: none !important;
+            }
+        }
+
+        /* Mobile Navigation Styles */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+                position: relative;
+                z-index: 1001;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 4rem 1.5rem;
+                transition: right 0.3s ease;
+                box-shadow: -2px 0 4px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-brand {
+                font-size: 1.25rem;
+                font-weight: 600;
+            }
+
+            .modern-nav .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Navigation -->
+    <nav class="modern-nav">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="index.html" class="nav-brand">CV Builder</a>
+                <button class="mobile-menu-btn" id="menuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="nav-menu" id="navMenu">
+                    <a href="index.html" class="nav-link">Details</a>
+                    <a href="short-bio.html" class="nav-link">Bio</a>
+                    <a href="experience.html" class="nav-link">Experience</a>
+                    <a href="education.html" class="nav-link">Education</a>
+                    <a href="skills.html" class="nav-link">Skills</a>
+                </div>
+                <div class="progress-bar" style="width: 100%;"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CV Content -->
+    <div class="container">
+        <!-- Header Section -->
+        <div class="cv-header">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <img src="placeholder-profile.jpg" alt="Profile" id="profile-image" class="rounded-circle">
+                </div>
+                <div class="col">
+                    <h1 id="full-name" class="mb-1"></h1>
+                    <h2 id="job-title" class="h4 text-muted mb-3"></h2>
+                    <div class="contact-info">
+                        <p class="mb-1"><i class="fas fa-envelope me-2"></i><span id="email"></span></p>
+                        <p class="mb-1"><i class="fas fa-phone me-2"></i><span id="phone"></span></p>
+                        <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i><span id="address"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Summary -->
+        <div class="section mb-4">
+            <h3 class="section-title">Professional Summary</h3>
+            <p id="professional-bio" class="mb-3"></p>
+            <div id="keywords" class="mb-2"></div>
+        </div>
+
+        <!-- Work Experience -->
+        <div class="section mb-4">
+            <h3 class="section-title">Work Experience</h3>
+            <div id="experience-section"></div>
+        </div>
+
+        <!-- Education -->
+        <div class="section mb-4">
+            <h3 class="section-title">Education</h3>
+            <div id="education-section"></div>
+        </div>
+
+        <!-- Skills -->
+        <div class="section mb-4">
+            <h3 class="section-title">Skills</h3>
+            <div class="mb-3">
+                <h4 class="h6 mb-2">Technical Skills</h4>
+                <div id="technical-skills"></div>
+            </div>
+            <div>
+                <h4 class="h6 mb-2">Soft Skills</h4>
+                <div id="soft-skills"></div>
+            </div>
+        </div>
+
+        <!-- Languages -->
+        <div class="section mb-4">
+            <h3 class="section-title">Languages</h3>
+            <div id="languages-section"></div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="section mb-4">
+            <h3 class="section-title">Certifications</h3>
+            <div id="certifications-section"></div>
+        </div>
+    </div>
+
+    <!-- Print Button -->
+    <button class="print-button" onclick="window.print()">
+        <i class="fas fa-print"></i>
+        <span>Print CV</span>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/preview.js"></script>
+    <script>
+        // Mobile menu functionality
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const navMenu = document.getElementById('navMenu');
+            const menuBtn = document.getElementById('menuBtn');
+            if (!navMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html> 

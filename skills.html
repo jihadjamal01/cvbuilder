@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Builder - Skills</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/styles.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 70px;
+        }
+        .skill-badge {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            border-radius: 20px;
+            background-color: #ffc107;
+            color: #000;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .skill-badge:hover {
+            background-color: #ffdb4d;
+        }
+        .skill-badge .remove-skill {
+            margin-left: 0.5rem;
+            opacity: 0.7;
+            cursor: pointer;
+        }
+        .skill-badge .remove-skill:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Navigation -->
+    <nav class="modern-nav">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="index.html" class="nav-brand">CV Builder</a>
+                <button class="mobile-menu-btn" id="menuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="nav-menu" id="navMenu">
+                    <a href="index.html" class="nav-link">Details</a>
+                    <a href="short-bio.html" class="nav-link">Bio</a>
+                    <a href="experience.html" class="nav-link">Experience</a>
+                    <a href="education.html" class="nav-link">Education</a>
+                    <a href="skills.html" class="nav-link active">Skills</a>
+                </div>
+                <div class="progress-bar" style="width: 100%;"></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="form-section">
+                    <div class="section-header">
+                        <h1 class="h3 mb-3">Skills & Languages</h1>
+                    </div>
+                    <h2 class="h5 text-muted mb-4">Add your skills and language proficiencies</h2>
+
+                    <!-- Skills Section -->
+                    <div class="mb-5">
+                        <h3 class="h5 mb-3">Technical Skills</h3>
+                        <div id="skills-container" class="mb-3">
+                            <!-- Skills badges will be added here -->
+                        </div>
+                        <form id="skillsForm" class="mb-4">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="skill-input" placeholder="Add a skill">
+                                <label for="skill-input">Add a skill</label>
+                                <div class="form-text">Press Enter to add multiple skills</div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Languages Section -->
+                    <div class="mb-5">
+                        <h3 class="h5 mb-3">Languages</h3>
+                        <div id="languages-container" class="mb-3">
+                            <!-- Language badges will be added here -->
+                        </div>
+                        <form id="languageForm" class="mb-4">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="language-input" placeholder="Language">
+                                        <label for="language-input">Language</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="proficiency-level">
+                                            <option value="">Select proficiency</option>
+                                            <option value="Native">Native</option>
+                                            <option value="Fluent">Fluent</option>
+                                            <option value="Advanced">Advanced</option>
+                                            <option value="Intermediate">Intermediate</option>
+                                            <option value="Basic">Basic</option>
+                                        </select>
+                                        <label for="proficiency-level">Proficiency</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-grid mt-3">
+                                <button type="submit" class="btn btn-warning">Add Language</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Certifications Section -->
+                    <div class="mb-5">
+                        <h3 class="h5 mb-3">Certifications</h3>
+                        <div id="certifications-container" class="mb-3">
+                            <!-- Certification entries will be added here -->
+                        </div>
+                        <form id="certificationForm" class="mb-4">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="certification-name" placeholder="Certification Name" required>
+                                <label for="certification-name">Certification Name</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="issuing-organization" placeholder="Issuing Organization" required>
+                                <label for="issuing-organization">Issuing Organization</label>
+                            </div>
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="month" class="form-control" id="issue-date" required>
+                                        <label for="issue-date">Issue Date</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="month" class="form-control" id="expiry-date">
+                                        <label for="expiry-date">Expiry Date (Optional)</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="credential-id" placeholder="Credential ID">
+                                <label for="credential-id">Credential ID (Optional)</label>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-warning">Add Certification</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="button" id="preview-btn" class="btn btn-warning btn-lg">Preview CV</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Templates -->
+    <template id="certification-entry-template">
+        <div class="card mb-3 certification-entry">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <h5 class="card-title mb-1"></h5>
+                        <h6 class="card-subtitle mb-2 text-muted organization"></h6>
+                        <p class="card-text small text-muted dates"></p>
+                        <p class="card-text small credential-id"></p>
+                    </div>
+                    <button class="btn btn-sm btn-outline-danger delete-btn">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/skills.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Hide mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const navMenu = document.getElementById('navMenu');
+            const menuBtn = document.getElementById('menuBtn');
+            if (!navMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                navMenu.classList.remove('active');
+                menuBtn.querySelector('i').classList.add('fa-bars');
+                menuBtn.querySelector('i').classList.remove('fa-times');
+            }
+        });
+    </script>
+</body>
+</html> 
